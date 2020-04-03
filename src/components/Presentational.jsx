@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const Presentational = ({ verb }) => {
+const Presentational = ({ verb, index, changeIndex }) => {
   const initialInputs = {
     infinitive: "",
     pastSimple: "",
@@ -18,20 +18,22 @@ const Presentational = ({ verb }) => {
   };
   const checkForm = () => {
     const arr = [
-      verb[0] === form.infinitive,
-      verb[1] === form.pastSimple,
-      verb[2] === form.pastParticiple
+      verb.infinitive === form.infinitive,
+      verb.pastSimple === form.pastSimple,
+      verb.pastParticiple === form.pastParticiple
     ];
     if (arr.every(i => i)) {
       checkAnswer(true);
       alert("Ответ верный");
+      changeIndex(++index);
+      clearForm();
     }
   };
   return (
     <>
-      <h1>
-        Напишите 3 формы глагола <i>{verb[3]}</i>
-      </h1>
+      <h3>
+        Напишите 3 формы глагола <i>{verb.infinitive}</i>
+      </h3>
 
       <input
         type="text"

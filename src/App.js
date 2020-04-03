@@ -1,28 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Presentational from "./components/Presentational";
+import data from "./data.json";
 
-function App() {
-  const verb = ["do", "did", "done", "делать"];
+const App = () => {
+  const [index, changeIndex] = useState(0);
+  const verb = data.verbs[index];
   return (
     <div className="App">
       <header className="App-header">
-        <Presentational verb={verb} />
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
+        <Presentational verb={verb} index={index} changeIndex={changeIndex} />
       </header>
     </div>
   );
-}
+};
 
 export default App;
